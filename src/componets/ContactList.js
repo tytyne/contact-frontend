@@ -129,6 +129,8 @@ const ContactsList = () => {
             >
               Edit
             </Link>
+          
+            {/* <button>Edit </button> */}
           </div>
         ) : (
           <div>

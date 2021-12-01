@@ -6,8 +6,8 @@ const AddContact = () => {
     id: null,
     firstname: "",
     lastname: "",
-    email:[],
-    phone:[]
+    email:"",
+    phone:""
   };
   const [contact, setContact] = useState(initialContactState);
   const [submitted, setSubmitted] = useState(false);
@@ -18,15 +18,31 @@ const AddContact = () => {
   };
 
   const saveContact = () => {
+   
+   
+    let emails = contact.email.split(",")
+    let phones = contact.phone.split(",")
+    let emptyArrEmail = []
+    for(let i = 0;  i<emails.length; i++) {
+    emptyArrEmail.push(emails[i])
+    }
+    let emptyArrPhone = []
+    for(let i = 0;  i<phones.length; i++) {
+    emptyArrPhone.push(phones[i])
+    }
+    // console.log("check array",emptyArrEmail)
+    // console.log("check array",emptyArrPhone)
     var data = {
       firstname: contact.firstname,
       lastname: contact.lastname,
-      email: contact.email,
-      phone: contact.phone
+      email:emptyArrEmail,
+      phone: emptyArrPhone
     };
+    console.log("check data",data.phone)
 
     ContactService.insertContact(data)
       .then(response => {
+        console.log("check thisss",response)
         setContact({
           id: response.data.id,
           firstname: response.data.firstname,
@@ -35,7 +51,8 @@ const AddContact = () => {
           phone: response.data.phone
         });
         setSubmitted(true);
-        console.log(response.data);
+        console.log("check responseee",response.data.firstname);
+        
       })
       .catch(e => {
         console.log(e);

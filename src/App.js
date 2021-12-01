@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch,Link, Route } from "react-router-dom";
+// import { Switch, Route, Link,BrowserRouter } from "react-router-dom";
+import { Routes ,Route,Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Routing from "./Route/route"
 
 import AddContact from "./componets/AddContact";
 import Contact from "./componets/Contact";
@@ -31,16 +31,17 @@ function App() {
 
       <div className="container mt-3">
       
-        {/* <Router>
-          <Route exact path="/" component={ContactsList} />
-          <Route exact path="/add" component={AddContact} />
-          <Route path="/contacts/:id" component={Contact} />
-        </Router> */}
+        <Routes>
+          <Route exact path="/" element={<ContactsList />} />
+          <Route exact path="/contacts" element={<ContactsList />} />
+          {/* <Route path="/" element={<ContactsList />}></Route> */}
+          <Route exact path="/add" element={<AddContact />} />
+          <Route path="/contacts/:id" element={<Contact/>} />
+        </Routes>
      
       </div>
     </div>
   );
-
 }
 
-export default Routing;
+export default App;
