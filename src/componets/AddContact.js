@@ -6,8 +6,8 @@ const AddContact = () => {
     id: null,
     firstname: "",
     lastname: "",
-    email:"",
-    phone:""
+    email:[],
+    phone:[]
   };
   const [contact, setContact] = useState(initialContactState);
   const [submitted, setSubmitted] = useState(false);
